@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/index.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    
+    <title>Whiteboard</title>
+</head>
+<body>
+    <div class="whiteboardInterface">
+        <div class="whiteboard">
+            <div class="d-flex justify-content-between whiteboard_select whiteboard_buttons">
+                <div class="whiteboard_select1">
+                    <select class="form-select" id="imageSelect" aria-label="Default select example" onchange=changeImage() >
+                        <option value="../img/HelloWorld.svg" selected>Hello World</option>
+                        <option value="../img/GoodDay.svg">Good Day</option>
+                        <option value="../img/Happy.svg">Happy</option>
+                        <option value="../img/Enjoy.svg">Enjoy</option>
+                        <option value="../img/curve.svg">Curve</option>
+                    </select>
+                </div>
+                <button type="button " id="myBtn" class="btn play_button btn-primary disabled"  onclick=myFunction()>
+                    <span><img src="../icons/play-button.png" alt="PlayButton"></span>
+                    <span id="play">Play</span>
+                </button>
+                <div class="whiteboard_select2">
+                    <select class="form-select" id="handStyleSelect" aria-label="Default select example" onchange=changeVideo()>
+                        <option value="c" selected>
+                            Select Hand Style
+                        </option>
+                        <option value="a">Pen Style</option>
+                        <option value="b"> Hand Style</option>
+                    </select>
+                </div>
+            </div>
+            <div class="whiteboard_player" id="whiteBoardPlayer">
+                <!-- <img src="../img/Hellworld.svg" alt="HelloWorld" id="myImage" class=""> -->
+                <video  muted loop control id="myVideo" src="../video/HelloWorld1.mp4" poster="../img/HelloWorld.svg" >
+                    <!-- <source id="videoSelect" src="" type="video/mp4" > -->
+                  </video>
+            </div>
+    </div>
+    </div>
+    <script >
+        function changeImage(){
+            let selectVideo = document.getElementById("myVideo");
+            var e = document.getElementById("imageSelect");
+            var value = e.value;
+            console.log(value)
+            selectVideo.poster = value
+            
+        }
+    </script>
+    <script >
+        
+
+        var selectedHandStyle = document.getElementById("handStyleSelect")
+        var selectedImage = document.getElementById("imageSelect")
+        var selectingVideo = document.getElementById("myVideo")
+        var playButton = document.getElementById("myBtn")
+
+        function myFunction(video) {
+            selectingVideo.src = video
+            playButton.className = classname
+        }
+
+        function changeVideo() {
+            let classname = "btn play_button btn-primary"
+            if(selectedImage.value === "../img/HelloWorld.svg") {
+                console.log("Selecting video")
+                console.log(selectedHandStyle.value)
+                if(selectedHandStyle.value === "a") {
+                     console.log("selected video a")
+                     selectingVideo.src = "../video/HelloWorld1.mp4"
+                     playButton.className = classname
+                     console.log(selectingVideo.src)
+                }
+                else {
+                    console.log("selected video b")
+                    selectingVideo.src = "../video/HelloWorld2.mp4"
+                    playButton.className = classname
+                    console.log(selectingVideo.src)
+                }
+            }
+            if(selectedImage.value === "../img/GoodDay.svg") {
+                console.log("selecting good day: ",selectedImage.value)
+                console.log("Selecting video")
+                if(selectedHandStyle.value === "a" ) {
+                    console.log("selected a")
+                    selectingVideo.src = "../video/GoodDay1.mp4"
+                    playButton.className = classname
+                    console.log(selectingVideo.src)                    
+                }
+                else {
+                    console.log("selected video b")
+                    selectingVideo.src = "../video/GoodDay2.mp4"
+                    playButton.className = classname
+                    console.log(selectingVideo.src)
+                }
+            }
+            if(selectedImage.value === "../img/Happy.svg") {
+                console.log("selecting good day: ",selectedImage.value)
+                console.log("Selecting video")
+                if(selectedHandStyle.value === "a" ) {
+                    console.log("selected a")
+                    selectingVideo.src = "../video/Happy1.mp4"
+                    playButton.className = classname
+                    console.log(selectingVideo.src)                    
+                }
+                else {
+                    console.log("selected video b")
+                    selectingVideo.src = "../video/Happy2.mp4"
+                    playButton.className = classname
+                    console.log(selectingVideo.src)
+                }
+            }
+            if(selectedImage.value === "../img/Enjoy.svg") {
+                console.log("selecting good day: ",selectedImage.value)
+                console.log("Selecting video")
+                if(selectedHandStyle.value === "a" ) {
+                    console.log("selected a")
+                    selectingVideo.src = "../video/Enjoy1.mp4"
+                    playButton.className = classname
+                    console.log(selectingVideo.src)                    
+                }
+                else {
+                    console.log("selected video b")
+                    selectingVideo.src = "../video/Enjoy2.mp4"
+                    playButton.className = classname
+                    console.log(selectingVideo.src)
+                }
+            }
+            if(selectedImage.value === "../img/curve.svg") {
+                console.log("selecting good day: ",selectedImage.value)
+                console.log("Selecting video")
+                if(selectedHandStyle.value === "a" ) {
+                    console.log("selected a")
+                    selectingVideo.src = "../video/curve1.mp4"
+                    playButton.className = classname
+                    console.log(selectingVideo.src)                    
+                }
+                else {
+                    console.log("selected video b")
+                    selectingVideo.src = "../video/curve2.mp4"
+                    playButton.className = classname
+                    console.log(selectingVideo.src)
+                }
+            }
+        }
+    </script>
+    <script>
+        var video = document.getElementById("myVideo");
+        var btn = document.getElementById("play");
+
+        function myFunction() {
+
+            if (video.paused) {
+                video.play();
+                btn.innerHTML = "Pause";
+            } else {
+                video.pause();
+                btn.innerHTML = "Play";
+            }
+        }
+    </script>
+</body>
+
+</html>
